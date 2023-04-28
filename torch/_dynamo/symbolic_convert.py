@@ -561,7 +561,8 @@ class InstructionTranslatorBase(Checkpointable[InstructionTranslatorGraphState])
             result = InliningInstructionTranslator.inline_call(self, fn, args, kwargs)
             self.output.guards.update(fn.guards)
             return result
-        except Exception:
+        except Exception as e:
+            print(e)
             self.restore_graphstate(state)
             raise
 
